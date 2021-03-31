@@ -1,0 +1,94 @@
+[{
+    "name": "id",
+    "dbType": "bigincrements:unsigned",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": true,
+    "inForm": false,
+    "inIndex": false
+},
+{
+    "name": "pembayaran_id",
+    "dbType": "biginteger:unsigned:nullable:foreign,pembayarans,id",
+    "htmlType": "select,s",
+    "relation": "mt1,Pembayaran,pembayaran_id,id"
+},
+{
+    "name": "uang_keluar_id",
+    "dbType": "biginteger:unsigned:nullable:foreign,uang_keluars,id",
+    "htmlType": "select,s",
+    "relation": "mt1,UangKeluar,uang_keluar_id,id"
+},
+{
+    "name": "tanggal",
+    "dbType": "string",
+    "htmlType": "timestamp"
+},
+{
+    "name": "keterangan",
+    "dbType": "text",
+    "htmlType": "text"
+},
+{
+    "name": "total_saldo",
+    "dbType": "integer",
+    "htmlType": "number"
+},
+{
+    "name": "created_by",
+    "dbType": "biginteger:unsigned:nullable:foreign,users,id",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": false,
+    "inForm": false,
+    "inIndex": false
+},
+{
+    "name": "updated_by",
+    "dbType": "biginteger:unsigned:nullable:foreign,users,id",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": false,
+    "inForm": false,
+    "inIndex": false
+},
+{
+    "name": "deleted_by",
+    "dbType": "biginteger:unsigned:nullable:foreign,users,id",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": false,
+    "inForm": false,
+    "inIndex": false
+},
+{
+    "name": "created_at",
+    "dbType": "timestamp",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": false,
+    "inForm": false,
+    "inIndex": false
+},
+{
+    "name": "updated_at",
+    "dbType": "timestamp",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": false,
+    "inForm": false,
+    "inIndex": false
+}
+]

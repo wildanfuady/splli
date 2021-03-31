@@ -1,0 +1,87 @@
+[{
+    "name": "id",
+    "dbType": "bigincrements:unsigned",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": true,
+    "inForm": false,
+    "inIndex": false
+},
+{
+    "name": "tanggal",
+    "dbType": "string",
+    "htmlType": "text"
+},
+{
+    "name": "qty",
+    "dbType": "integer",
+    "htmlType": "text"
+},
+{
+    "name": "harga",
+    "dbType": "qty",
+    "htmlType": "text"
+},
+{
+    "name": "total_harga",
+    "dbType": "integer",
+    "htmlType": "text"
+},
+{
+    "name": "created_by",
+    "dbType": "biginteger:unsigned:nullable:foreign,users,id",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": false,
+    "inForm": false,
+    "inIndex": false
+},
+{
+    "name": "updated_by",
+    "dbType": "biginteger:unsigned:nullable:foreign,users,id",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": false,
+    "inForm": false,
+    "inIndex": false
+},
+{
+    "name": "deleted_by",
+    "dbType": "biginteger:unsigned:nullable:foreign,users,id",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": false,
+    "inForm": false,
+    "inIndex": false
+},
+{
+    "name": "created_at",
+    "dbType": "timestamp",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": false,
+    "inForm": false,
+    "inIndex": false
+},
+{
+    "name": "updated_at",
+    "dbType": "timestamp",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": false,
+    "inForm": false,
+    "inIndex": false
+}
+]

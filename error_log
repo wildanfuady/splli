@@ -1,0 +1,1 @@
+[01-Mar-2021 12:09:20 Asia/Jakarta] PHP Fatal error:  Allowed memory size of 1610612736 bytes exhausted (tried to allocate 134217736 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/DependencyResolver/RuleSet.php on line 84

@@ -1,0 +1,83 @@
+[{
+    "name": "id",
+    "dbType": "bigincrements:unsigned",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": true,
+    "inForm": false,
+    "inIndex": false
+},
+{
+    "name": "barang_id",
+    "dbType": "biginteger:unsigned:nullable:foreign,barangs,id",
+    "htmlType": "select,s",
+    "relation": "mt1,Barang,barang_id,id"
+},
+{
+    "name": "harga_jual",
+    "dbType": "integer",
+    "htmlType": "text"
+},
+{
+    "name": "qty",
+    "dbType": "string",
+    "htmlType": "text"
+},
+{
+    "name": "created_by",
+    "dbType": "biginteger:unsigned:nullable:foreign,users,id",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": false,
+    "inForm": false,
+    "inIndex": false
+},
+{
+    "name": "updated_by",
+    "dbType": "biginteger:unsigned:nullable:foreign,users,id",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": false,
+    "inForm": false,
+    "inIndex": false
+},
+{
+    "name": "deleted_by",
+    "dbType": "biginteger:unsigned:nullable:foreign,users,id",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": false,
+    "inForm": false,
+    "inIndex": false
+},
+{
+    "name": "created_at",
+    "dbType": "timestamp",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": false,
+    "inForm": false,
+    "inIndex": false
+},
+{
+    "name": "updated_at",
+    "dbType": "timestamp",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": false,
+    "inForm": false,
+    "inIndex": false
+}
+]

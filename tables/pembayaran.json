@@ -1,0 +1,127 @@
+[{
+    "name": "id",
+    "dbType": "bigincrements:unsigned",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": true,
+    "inForm": false,
+    "inIndex": false
+},
+{
+    "name": "id_po",
+    "dbType": "string",
+    "htmlType": "text"
+},
+{
+    "name": "tanggal",
+    "dbType": "timestamps",
+    "htmlType": "text"
+},
+{
+    "name": "plat_motor",
+    "dbType": "string",
+    "htmlType": "text"
+},
+{
+    "name": "nama_konsumen",
+    "dbType": "string",
+    "htmlType": "text"
+},
+{
+    "name": "nama_sparepart",
+    "dbType": "string",
+    "htmlType": "text"
+},
+{
+    "name": "harga_grosir",
+    "dbType": "integer",
+    "htmlType": "number"
+},
+{
+    "name": "harga_jual",
+    "dbType": "integer",
+    "htmlType": "number"
+},
+{
+    "name": "qty",
+    "dbType": "integer",
+    "htmlType": "number"
+},
+{
+    "name": "harga_pasang",
+    "dbType": "integer",
+    "htmlType": "number"
+},
+{
+    "name": "jasa_service",
+    "dbType": "integer",
+    "htmlType": "number"
+},
+{
+    "name": "total_harga",
+    "dbType": "integer",
+    "htmlType": "number"
+},
+{
+    "name": "selisih",
+    "dbType": "integer",
+    "htmlType": "number"
+},
+{
+    "name": "created_by",
+    "dbType": "biginteger:unsigned:nullable:foreign,users,id",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": false,
+    "inForm": false,
+    "inIndex": false
+},
+{
+    "name": "updated_by",
+    "dbType": "biginteger:unsigned:nullable:foreign,users,id",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": false,
+    "inForm": false,
+    "inIndex": false
+},
+{
+    "name": "deleted_by",
+    "dbType": "biginteger:unsigned:nullable:foreign,users,id",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": false,
+    "inForm": false,
+    "inIndex": false
+},
+{
+    "name": "created_at",
+    "dbType": "timestamp",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": false,
+    "inForm": false,
+    "inIndex": false
+},
+{
+    "name": "updated_at",
+    "dbType": "timestamp",
+    "htmlType": "",
+    "validations": "",
+    "searchable": false,
+    "fillable": false,
+    "primary": false,
+    "inForm": false,
+    "inIndex": false
+}
+]
