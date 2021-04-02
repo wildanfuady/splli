@@ -30,7 +30,11 @@ class UangKeluar extends Model
         'tanggal',
         'qty',
         'harga',
-        'total_harga'
+        'total_harga',
+        'keterangan',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
 
     /**
@@ -41,7 +45,12 @@ class UangKeluar extends Model
     protected $casts = [
         'tanggal' => 'string',
         'qty' => 'integer',
-        'total_harga' => 'integer'
+        'harga' => 'integer',
+        'total_harga' => 'integer',
+        'keterangan' => 'string',
+        'created_by' => 'integer',
+        'updated_by' => 'integer',
+        'deleted_by' => 'integer',
     ];
 
     /**

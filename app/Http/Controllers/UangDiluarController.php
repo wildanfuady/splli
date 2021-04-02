@@ -10,6 +10,7 @@ use App\Repositories\UangDiluarRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use Auth;
 
 class UangDiluarController extends AppBaseController
 {
@@ -52,6 +53,8 @@ class UangDiluarController extends AppBaseController
     public function store(CreateUangDiluarRequest $request)
     {
         $input = $request->all();
+
+        $input['created_by'] = Auth::id();
 
         $uangDiluar = $this->uangDiluarRepository->create($input);
 
@@ -118,7 +121,11 @@ class UangDiluarController extends AppBaseController
             return redirect(route('uangDiluars.index'));
         }
 
-        $uangDiluar = $this->uangDiluarRepository->update($request->all(), $id);
+        $input = $request->all();
+
+        $input['updated_by'] = Auth::id();
+
+        $uangDiluar = $this->uangDiluarRepository->update($input, $id);
 
         Flash::success('Uang Diluar updated successfully.');
 
@@ -141,6 +148,10 @@ class UangDiluarController extends AppBaseController
 
             return redirect(route('uangDiluars.index'));
         }
+
+        $input['deleted_by'] = Auth::id();
+
+        $this->stokBarangRepository->update($input, $id);
 
         $this->uangDiluarRepository->delete($id);
 

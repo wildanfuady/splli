@@ -25,6 +25,25 @@ class CreateUangKeluarRequest extends FormRequest
      */
     public function rules()
     {
-        return UangKeluar::$rules;
+        return [
+            'tanggal' => 'required|string',
+            'qty' => 'required|numeric',
+            'harga' => 'required|numeric',
+            'total_harga' => 'required|numeric',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'tanggal.required' => 'Tanggal wajib diisi.',
+            'tanggal.string' => 'Tanggal wajib berupa string.',
+            'qty.required' => 'Quantity wajib diisi.',
+            'qty.numeric' => 'Quantity wajib berupa angka.',
+            'harga.required' => 'Harga wajib diisi.',
+            'harga.numeric' => 'Harga wajib berupa angka.',
+            'total_harga.required' => 'Total harga wajib diisi.',
+            'total_harga.numeric' => 'Total harga wajib berupa angka.',
+        ];
     }
 }

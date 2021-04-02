@@ -18,7 +18,13 @@ class UangKeluarDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'uang_keluars.datatables_actions');
+        return $dataTable->addColumn('action', 'uang_keluars.datatables_actions')
+        ->editColumn('harga', function($data){
+            return "Rp".number_format($data->harga, 0, 0, ".");
+        })
+        ->editColumn('total_harga', function($data){
+            return "Rp".number_format($data->total_harga, 0, 0, ".");
+        });
     }
 
     /**
@@ -42,7 +48,7 @@ class UangKeluarDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false])
+            // ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'       => 'Bfrtip',
                 'stateSave' => true,
@@ -65,10 +71,11 @@ class UangKeluarDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'tanggal' => ['searchable' => false],
-            'qty' => ['searchable' => false],
-            'harga' => ['searchable' => false],
-            'total_harga' => ['searchable' => false]
+            'action' => ['width' => '120px', 'printable' => false],
+            'tanggal' => ['searchable' => true],
+            'qty' => ['searchable' => true],
+            'harga' => ['searchable' => true],
+            'total_harga' => ['searchable' => true]
         ];
     }
 
