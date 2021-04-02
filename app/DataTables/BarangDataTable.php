@@ -8,17 +8,16 @@ use Yajra\DataTables\EloquentDataTable;
 
 class BarangDataTable extends DataTable
 {
-    /**
-     * Build DataTable class.
-     *
-     * @param mixed $query Results from query() method.
-     * @return \Yajra\DataTables\DataTableAbstract
-     */
+    protected $index = 0;
+
     public function dataTable($query)
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'barangs.datatables_actions');
+        return $dataTable->addColumn('action', 'barangs.datatables_actions')
+        ->addColumn('no', function(){
+            return ++$this->index;
+        });
     }
 
     /**
@@ -42,7 +41,7 @@ class BarangDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false])
+            // ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'       => 'Bfrtip',
                 'stateSave' => true,
@@ -65,12 +64,13 @@ class BarangDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'tanggal_pembelian' => ['searchable' => false],
-            'kode_barang' => ['searchable' => false],
-            'nama_barang' => ['searchable' => false],
-            'harga_barang' => ['searchable' => false],
-            'qty_pembalian' => ['searchable' => false],
-            'nama_pic' => ['searchable' => false]
+            'action' => ['width' => '120px', 'printable' => false],
+            'tanggal_pembelian' => ['searchable' => true],
+            'kode_barang' => ['searchable' => true],
+            'nama_barang' => ['searchable' => true],
+            'harga_barang' => ['searchable' => true],
+            'qty_pembelian' => ['searchable' => true],
+            'nama_pic' => ['searchable' => true, 'title' => 'Nama PIC']
         ];
     }
 

@@ -20,7 +20,7 @@ class CreateBarangsTable extends Migration
             $table->string('kode_barang')->nullable();
             $table->string('nama_barang')->nullable();
             $table->integer('harga_barang')->nullable();
-            $table->integer('qty_pembalian')->nullable();
+            $table->integer('qty_pembelian')->nullable();
             $table->string('nama_pic')->nullable();
             $table->biginteger('created_by')->unsigned()->nullable();
             $table->biginteger('updated_by')->unsigned()->nullable();

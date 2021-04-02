@@ -22,14 +22,15 @@ class Log extends Model
     public $table = 'logs';
     
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'created_at'];
 
 
 
     public $fillable = [
         'user_id',
         'ip',
-        'city'
+        'city',
+        'created_at'
     ];
 
     /**
@@ -60,6 +61,6 @@ class Log extends Model
      **/
     public function user()
     {
-        return $this->belongsTo(\App\Models\User::class, 'user_id', 'id');
+        return $this->belongsTo(\App\User::class, 'user_id', 'id');
     }
 }

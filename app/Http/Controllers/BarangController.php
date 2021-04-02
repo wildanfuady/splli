@@ -55,7 +55,7 @@ class BarangController extends AppBaseController
 
         $barang = $this->barangRepository->create($input);
 
-        Flash::success('Barang saved successfully.');
+        Flash::success('Pembelian Barang saved successfully.');
 
         return redirect(route('barangs.index'));
     }
@@ -72,7 +72,7 @@ class BarangController extends AppBaseController
         $barang = $this->barangRepository->find($id);
 
         if (empty($barang)) {
-            Flash::error('Barang not found');
+            Flash::error('Pembelian Barang not found');
 
             return redirect(route('barangs.index'));
         }
@@ -92,7 +92,7 @@ class BarangController extends AppBaseController
         $barang = $this->barangRepository->find($id);
 
         if (empty($barang)) {
-            Flash::error('Barang not found');
+            Flash::error('Pembelian Barang not found');
 
             return redirect(route('barangs.index'));
         }
@@ -113,14 +113,14 @@ class BarangController extends AppBaseController
         $barang = $this->barangRepository->find($id);
 
         if (empty($barang)) {
-            Flash::error('Barang not found');
+            Flash::error('Pembelian Barang not found');
 
             return redirect(route('barangs.index'));
         }
 
         $barang = $this->barangRepository->update($request->all(), $id);
 
-        Flash::success('Barang updated successfully.');
+        Flash::success('Pembelian Barang updated successfully.');
 
         return redirect(route('barangs.index'));
     }
@@ -137,14 +137,14 @@ class BarangController extends AppBaseController
         $barang = $this->barangRepository->find($id);
 
         if (empty($barang)) {
-            Flash::error('Barang not found');
+            Flash::error('Pembelian Barang not found');
 
             return redirect(route('barangs.index'));
         }
 
         $this->barangRepository->delete($id);
 
-        Flash::success('Barang deleted successfully.');
+        Flash::success('Pembelian Barang deleted successfully.');
 
         return redirect(route('barangs.index'));
     }

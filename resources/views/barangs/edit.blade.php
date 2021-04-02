@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1>Edit Barang</h1>
+                    <h1>Edit Pembelian Barang</h1>
                 </div>
             </div>
         </div>
@@ -26,8 +26,8 @@
             </div>
 
             <div class="card-footer">
-                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('barangs.index') }}" class="btn btn-default">Cancel</a>
+                {!! Form::submit('Update', ['class' => 'btn btn-primary float-right']) !!}
+                <a href="{{ route('barangs.index') }}" class="btn btn-default">Batal</a>
             </div>
 
            {!! Form::close() !!}

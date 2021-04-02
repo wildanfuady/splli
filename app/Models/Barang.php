@@ -5,18 +5,6 @@ namespace App\Models;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * Class Barang
- * @package App\Models
- * @version March 31, 2021, 8:57 pm UTC
- *
- * @property string $tanggal_pembelian
- * @property string $kode_barang
- * @property string $nama_barang
- * @property integer $harga_barang
- * @property integer $qty_pembalian
- * @property string $nama_pic
- */
 class Barang extends Model
 {
     use SoftDeletes;
@@ -33,7 +21,7 @@ class Barang extends Model
         'kode_barang',
         'nama_barang',
         'harga_barang',
-        'qty_pembalian',
+        'qty_pembelian',
         'nama_pic'
     ];
 
@@ -47,7 +35,7 @@ class Barang extends Model
         'kode_barang' => 'string',
         'nama_barang' => 'string',
         'harga_barang' => 'integer',
-        'qty_pembalian' => 'integer',
+        'qty_pembelian' => 'integer',
         'nama_pic' => 'string'
     ];
 
@@ -57,8 +45,12 @@ class Barang extends Model
      * @var array
      */
     public static $rules = [
-        
+        'tanggal_pembelian' => 'required|date',
+        'kode_barang' => 'required|string',
+        'nama_barang' => 'required|string',
+        'harga_barang' => 'required|numeric',
+        'qty_pembelian' => 'required|numeric',
+        'nama_pic' => 'required|string',
     ];
 
-    
 }
