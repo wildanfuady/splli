@@ -26,7 +26,8 @@ class HomeController extends Controller
      */
     public function index(LogDataTable $logDataTable)
     {
-        return $logDataTable->render('home');
+        $jumlahPembelianBarang = \App\Models\Barang::count();
+        return $logDataTable->render('home', compact('jumlahPembelianBarang'));
     }
 
 }

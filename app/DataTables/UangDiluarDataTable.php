@@ -18,7 +18,16 @@ class UangDiluarDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'uang_diluars.datatables_actions');
+        return $dataTable->addColumn('action', 'uang_diluars.datatables_actions')
+        ->editColumn('jumlah_tagihan', function($data){
+            return "Rp".number_format($data->jumlah_tagihan, 0, 0, ".");
+        })
+        ->editColumn('jumlah_hutang', function($data){
+            return "Rp".number_format($data->jumlah_hutang, 0, 0, ".");
+        })
+        ->editColumn('sisa_hutang', function($data){
+            return "Rp".number_format($data->sisa_hutang, 0, 0, ".");
+        });
     }
 
     /**
@@ -42,7 +51,7 @@ class UangDiluarDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false])
+            // ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'       => 'Bfrtip',
                 'stateSave' => true,
@@ -65,12 +74,12 @@ class UangDiluarDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'nama_konsumen' => ['searchable' => false],
-            'hp_konsumen' => ['searchable' => false],
-            'jumlah_tagihan' => ['searchable' => false],
-            'jumlah_hutang' => ['searchable' => false],
-            'sisa_hutang' => ['searchable' => false],
-            'keterangan' => ['searchable' => false]
+            'action' => ['width' => '120px', 'printable' => false],
+            'nama_konsumen' => ['searchable' => true],
+            'hp_konsumen' => ['searchable' => true, 'title' => 'HP Konsumen'],
+            'jumlah_tagihan' => ['searchable' => true],
+            'jumlah_hutang' => ['searchable' => true],
+            'sisa_hutang' => ['searchable' => true]
         ];
     }
 

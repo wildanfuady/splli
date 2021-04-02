@@ -1,18 +1,23 @@
 <!-- Barang Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('barang_id', 'Barang Id:') !!}
-    {!! Form::select('barang_id', ['s' => 's'], null, ['class' => 'form-control custom-select']) !!}
+    {!! Form::label('Pilih Barang:') !!}
+    <select name="barang_id" id="barang_id" class="form-control custom-select">
+        <option value="">Pilih Barang</option>
+        @foreach($barangs as $item)
+        <option value="{{ $item->id }}" @php echo ($isEdit && $item->id == $stokBarang->barang_id) ? "selected" : "" @endphp>{{ $item->kode_barang.' - '.$item->nama_barang.' - Qty: '.$item->qty_pembelian.' - Harga: Rp'.number_format($item->harga_barang, 0, 0, ".") }}</option>
+        @endforeach
+    </select>
 </div>
 
 
 <!-- Harga Jual Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('harga_jual', 'Harga Jual:') !!}
-    {!! Form::text('harga_jual', null, ['class' => 'form-control']) !!}
+    {!! Form::text('harga_jual', null, ['class' => 'form-control', 'placeholder' => 0]) !!}
 </div>
 
 <!-- Qty Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('qty', 'Qty:') !!}
-    {!! Form::text('qty', null, ['class' => 'form-control']) !!}
+    {!! Form::text('qty', null, ['class' => 'form-control', 'placeholder' => 0]) !!}
 </div>

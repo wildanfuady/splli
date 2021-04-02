@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1>Create Uang Diluar</h1>
+                    <h1>Tambah Uang Diluar</h1>
                 </div>
             </div>
         </div>
@@ -28,8 +28,8 @@
             </div>
 
             <div class="card-footer">
-                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('uangDiluars.index') }}" class="btn btn-default">Cancel</a>
+                {!! Form::submit('Simpan', ['class' => 'btn btn-primary float-right']) !!}
+                <a href="{{ route('uangDiluars.index') }}" class="btn btn-default">Batal</a>
             </div>
 
             {!! Form::close() !!}

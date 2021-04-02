@@ -22,7 +22,10 @@ class Barang extends Model
         'nama_barang',
         'harga_barang',
         'qty_pembelian',
-        'nama_pic'
+        'nama_pic',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
 
     /**
@@ -36,7 +39,10 @@ class Barang extends Model
         'nama_barang' => 'string',
         'harga_barang' => 'integer',
         'qty_pembelian' => 'integer',
-        'nama_pic' => 'string'
+        'nama_pic' => 'string',
+        'created_by' => 'integer',
+        'updated_by' => 'integer',
+        'deleted_by' => 'integer',
     ];
 
     /**

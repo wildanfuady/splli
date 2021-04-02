@@ -8,17 +8,28 @@ use Yajra\DataTables\EloquentDataTable;
 
 class StokBarangDataTable extends DataTable
 {
-    /**
-     * Build DataTable class.
-     *
-     * @param mixed $query Results from query() method.
-     * @return \Yajra\DataTables\DataTableAbstract
-     */
+    protected $index = 0;
+
     public function dataTable($query)
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'stok_barangs.datatables_actions');
+        return $dataTable->addColumn('action', 'stok_barangs.datatables_actions')
+        ->addColumn('no', function(){
+            return ++$this->index;
+        })
+        ->addColumn('kode_barang', function($data){
+            return $data->barang->nama_barang;
+        })
+        ->addColumn('nama_barang', function($data){
+            return $data->barang->nama_barang;
+        })
+        ->addColumn('harga_beli', function($data){
+            return "Rp".number_format($data->barang->harga_barang, 0, 0, ".");
+        })
+        ->addColumn('harga_jual', function($data){
+            return "Rp".number_format($data->harga_jual, 0, 0, ".");
+        });
     }
 
     /**
@@ -42,7 +53,7 @@ class StokBarangDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false])
+            // ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'       => 'Bfrtip',
                 'stateSave' => true,
@@ -65,9 +76,12 @@ class StokBarangDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'barang_id' => ['searchable' => false],
-            'harga_jual' => ['searchable' => false],
-            'qty' => ['searchable' => false]
+            'action' => ['width' => '120px', 'printable' => false],
+            'kode_barang' => ['searchable' => true],
+            'nama_barang' => ['searchable' => true],
+            'harga_beli' => ['searchable' => true],
+            'harga_jual' => ['searchable' => true],
+            'qty' => ['searchable' => true]
         ];
     }
 

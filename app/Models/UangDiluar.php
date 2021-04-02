@@ -34,7 +34,10 @@ class UangDiluar extends Model
         'jumlah_tagihan',
         'jumlah_hutang',
         'sisa_hutang',
-        'keterangan'
+        'keterangan',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
 
     /**
@@ -44,14 +47,14 @@ class UangDiluar extends Model
      */
     protected $casts = [
         'nama_konsumen' => 'string',
-        'hp_konsumen' => 'integer',
+        'hp_konsumen' => 'string',
         'jumlah_tagihan' => 'integer',
         'jumlah_hutang' => 'integer',
         'sisa_hutang' => 'integer',
         'keterangan' => 'string',
         'created_by' => 'integer',
         'updated_by' => 'integer',
-        'deleted_by' => 'integer'
+        'deleted_by' => 'integer',
     ];
 
     /**
@@ -60,7 +63,11 @@ class UangDiluar extends Model
      * @var array
      */
     public static $rules = [
-        
+        'nama_konsumen' => 'required|string',
+        'hp_konsumen' => 'required|string',
+        'jumlah_tagihan' => 'required|numeric',
+        'jumlah_hutang' => 'required|numeric',
+        'sisa_hutang' => 'required|numeric',
     ];
 
     

@@ -10,6 +10,7 @@ use App\Repositories\StokBarangRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use Auth;
 
 class StokBarangController extends AppBaseController
 {
@@ -39,7 +40,9 @@ class StokBarangController extends AppBaseController
      */
     public function create()
     {
-        return view('stok_barangs.create');
+        $barangs = \App\Models\Barang::get();
+        $isEdit = false;
+        return view('stok_barangs.create', compact('barangs', 'isEdit'));
     }
 
     /**
@@ -52,6 +55,8 @@ class StokBarangController extends AppBaseController
     public function store(CreateStokBarangRequest $request)
     {
         $input = $request->all();
+
+        $input['created_by'] = Auth::id();
 
         $stokBarang = $this->stokBarangRepository->create($input);
 
@@ -96,8 +101,9 @@ class StokBarangController extends AppBaseController
 
             return redirect(route('stokBarangs.index'));
         }
-
-        return view('stok_barangs.edit')->with('stokBarang', $stokBarang);
+        $barangs = \App\Models\Barang::get();
+        $isEdit = true;
+        return view('stok_barangs.edit', compact('stokBarang', 'isEdit', 'barangs'));
     }
 
     /**
@@ -118,7 +124,11 @@ class StokBarangController extends AppBaseController
             return redirect(route('stokBarangs.index'));
         }
 
-        $stokBarang = $this->stokBarangRepository->update($request->all(), $id);
+        $input = $request->all();
+
+        $input['updated_by'] = Auth::id();
+
+        $stokBarang = $this->stokBarangRepository->update($input, $id);
 
         Flash::success('Stok Barang updated successfully.');
 
@@ -141,6 +151,10 @@ class StokBarangController extends AppBaseController
 
             return redirect(route('stokBarangs.index'));
         }
+
+        $input['deleted_by'] = Auth::id();
+
+        $this->stokBarangRepository->update($input, $id);
 
         $this->stokBarangRepository->delete($id);
 

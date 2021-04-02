@@ -29,7 +29,10 @@ class StokBarang extends Model
     public $fillable = [
         'barang_id',
         'harga_jual',
-        'qty'
+        'qty',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
 
     /**
@@ -40,7 +43,10 @@ class StokBarang extends Model
     protected $casts = [
         'barang_id' => 'integer',
         'harga_jual' => 'integer',
-        'qty' => 'string'
+        'qty' => 'string',
+        'created_by' => 'integer',
+        'updated_by' => 'integer',
+        'deleted_by' => 'integer',
     ];
 
     /**
@@ -49,7 +55,9 @@ class StokBarang extends Model
      * @var array
      */
     public static $rules = [
-        
+        'barang_id' => 'required|numeric',
+        'harga_jual' => 'required|numeric',
+        'qty' => 'required|numeric'
     ];
 
     /**

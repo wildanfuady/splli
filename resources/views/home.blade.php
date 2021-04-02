@@ -9,7 +9,7 @@
             <!-- small box -->
             <div class="small-box bg-primary">
                 <div class="inner">
-                    <h3>0</h3>
+                    <h3>{{ $jumlahPembelianBarang }}</h3>
 
                     <p>Jumlah Pembelian Barang</p>
                 </div>

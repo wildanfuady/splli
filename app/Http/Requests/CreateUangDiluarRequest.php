@@ -25,6 +25,28 @@ class CreateUangDiluarRequest extends FormRequest
      */
     public function rules()
     {
-        return UangDiluar::$rules;
+        return [
+            'nama_konsumen' => 'required|string',
+            'hp_konsumen' => 'required|numeric',
+            'jumlah_tagihan' => 'required|numeric',
+            'jumlah_hutang' => 'required|numeric',
+            'sisa_hutang' => 'required|numeric',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'nama_konsumen.required' => 'Nama konsumen wajib diisi.',
+            'nama_konsumen.string' => 'Nama konsumen wajib berupa string.',
+            'hp_konsumen.required' => 'Nomor HP konsumen wajib diisi.',
+            'hp_konsumen.numeric' => 'Nomor HP konsumen wajib berupa angka.',
+            'jumlah_tagihan.required' => 'Jumlah tagihan wajib diisi.',
+            'jumlah_tagihan.numeric' => 'Jumlah tagihan wajib berupa angka.',
+            'jumlah_hutang.required' => 'Jumlah hutang wajib diisi.',
+            'jumlah_hutang.numeric' => 'Jumlah hutang wajib berupa angka.',
+            'sisa_hutang.required' => 'Sisa hutang wajib diisi.',
+            'sisa_hutang.numeric' => 'Sisa hutang wajib berupa angka.',
+        ];
     }
 }
