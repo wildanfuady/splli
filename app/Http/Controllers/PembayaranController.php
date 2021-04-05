@@ -39,7 +39,10 @@ class PembayaranController extends AppBaseController
      */
     public function create()
     {
-        return view('pembayarans.create');
+        $stokBarang = \App\Models\StokBarang::pluck('barang_id');
+        $barangs = \App\Models\Barang::whereIn('id', $stokBarang)->get();
+        $isEdit = false;
+        return view('pembayarans.create', compact('barangs', 'isEdit'));
     }
 
     /**
@@ -52,6 +55,9 @@ class PembayaranController extends AppBaseController
     public function store(CreatePembayaranRequest $request)
     {
         $input = $request->all();
+
+        $input['tanggal'] = date('Y-m-d H:i', strtotime($request->tanggal));
+        $input['barang_id'] = $request->barang_id;
 
         $pembayaran = $this->pembayaranRepository->create($input);
 
@@ -95,9 +101,13 @@ class PembayaranController extends AppBaseController
             Flash::error('Pembayaran not found');
 
             return redirect(route('pembayarans.index'));
-        }
+        }   
 
-        return view('pembayarans.edit')->with('pembayaran', $pembayaran);
+        $stokBarang = \App\Models\StokBarang::pluck('barang_id');
+        $barangs = \App\Models\Barang::whereIn('id', $stokBarang)->get();
+        $isEdit = true;
+
+        return view('pembayarans.edit', compact('barangs', 'isEdit', 'pembayaran'));
     }
 
     /**
@@ -117,8 +127,10 @@ class PembayaranController extends AppBaseController
 
             return redirect(route('pembayarans.index'));
         }
-
-        $pembayaran = $this->pembayaranRepository->update($request->all(), $id);
+        $input = $request->all();
+        $input['barang_id'] = $request->barang_id;
+        $input['tanggal'] = date('Y-m-d H:i', strtotime($request->tanggal));
+        $pembayaran = $this->pembayaranRepository->update($input, $id);
 
         Flash::success('Pembayaran updated successfully.');
 

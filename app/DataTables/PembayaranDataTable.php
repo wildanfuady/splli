@@ -18,7 +18,31 @@ class PembayaranDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'pembayarans.datatables_actions');
+        return $dataTable->addColumn('action', 'pembayarans.datatables_actions')
+        ->editColumn('harga_grosir', function($data){
+            return "Rp".number_format($data->harga_grosir, 0, 0, ".");
+        })
+        ->editColumn('harga_jual', function($data){
+            return "Rp".number_format($data->harga_jual, 0, 0, ".");
+        })
+        ->editColumn('harga_pasang', function($data){
+            return "Rp".number_format($data->harga_pasang, 0, 0, ".");
+        })
+        ->editColumn('jasa_service', function($data){
+            return "Rp".number_format($data->jasa_service, 0, 0, ".");
+        })
+        ->editColumn('total_harga', function($data){
+            return "Rp".number_format($data->total_harga, 0, 0, ".");
+        })
+        ->editColumn('selisih', function($data){
+            return "Rp".number_format($data->selisih, 0, 0, ".");
+        })
+        ->editColumn('tanggal', function($data){
+            return date('d-m-Y H:i', strtotime($data->tanggal));
+        })
+        ->editColumn('nama_sparepart', function($data){
+            return $data->barang == null ? "" : $data->barang->nama_barang;
+        });
     }
 
     /**
@@ -42,7 +66,7 @@ class PembayaranDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false])
+            // ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'       => 'Bfrtip',
                 'stateSave' => true,
@@ -65,18 +89,19 @@ class PembayaranDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id_po' => ['searchable' => false],
-            'tanggal' => ['searchable' => false],
-            'plat_motor' => ['searchable' => false],
-            'nama_konsumen' => ['searchable' => false],
-            'nama_sparepart' => ['searchable' => false],
-            'harga_grosir' => ['searchable' => false],
-            'harga_jual' => ['searchable' => false],
-            'qty' => ['searchable' => false],
-            'harga_pasang' => ['searchable' => false],
-            'jasa_service' => ['searchable' => false],
-            'total_harga' => ['searchable' => false],
-            'selisih' => ['searchable' => false]
+            'action' => ['width' => '120px', 'printable' => false],
+            'id_po' => ['width' => '170px', 'searchable' => true, 'title' => 'ID PO'],
+            'tanggal' => ['searchable' => true],
+            'plat_motor' => ['searchable' => true],
+            'nama_konsumen' => ['searchable' => true],
+            'nama_sparepart' => ['searchable' => true],
+            'harga_grosir' => ['searchable' => true],
+            'harga_jual' => ['searchable' => true],
+            'qty' => ['searchable' => true],
+            'harga_pasang' => ['searchable' => true],
+            'jasa_service' => ['searchable' => true],
+            'total_harga' => ['searchable' => true],
+            'selisih' => ['searchable' => true]
         ];
     }
 

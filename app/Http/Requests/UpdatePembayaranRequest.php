@@ -25,8 +25,19 @@ class UpdatePembayaranRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = Pembayaran::$rules;
-        
-        return $rules;
+        return [
+            'id_po' => 'required|string',
+            'tanggal' => 'required|string',
+            'plat_motor' => 'required|string',
+            'nama_konsumen' => 'required|string',
+            'barang_id' => 'required|numeric',
+            'harga_grosir' => 'required|numeric',
+            'harga_jual' => 'required|numeric',
+            'qty' => 'required|numeric',
+            'harga_pasang' => 'required|numeric',
+            'jasa_service' => 'required|numeric',
+            'total_harga' => 'required|numeric',
+            'selisih' => 'required|numeric',
+        ];
     }
 }

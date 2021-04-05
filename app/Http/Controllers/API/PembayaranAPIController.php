@@ -26,13 +26,16 @@ class PembayaranAPIController extends AppBaseController
         $this->pembayaranRepository = $pembayaranRepo;
     }
 
-    /**
-     * Display a listing of the Pembayaran.
-     * GET|HEAD /pembayarans
-     *
-     * @param Request $request
-     * @return Response
-     */
+    public function find_barang($id = 0)
+    {
+        $barang = \App\Models\StokBarang::with(['barang'])->where('barang_id', $id)->first();
+        if($barang != null){
+            return response()->json($barang);
+        } else {
+            return null;
+        }
+    }
+    
     public function index(Request $request)
     {
         $pembayarans = $this->pembayaranRepository->all(

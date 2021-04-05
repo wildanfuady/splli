@@ -46,7 +46,8 @@ class Pembayaran extends Model
         'harga_pasang',
         'jasa_service',
         'total_harga',
-        'selisih'
+        'selisih',
+        'barang_id'
     ];
 
     /**
@@ -56,6 +57,7 @@ class Pembayaran extends Model
      */
     protected $casts = [
         'id_po' => 'string',
+        'tanggal' => 'string',
         'plat_motor' => 'string',
         'nama_konsumen' => 'string',
         'nama_sparepart' => 'string',
@@ -66,6 +68,7 @@ class Pembayaran extends Model
         'jasa_service' => 'integer',
         'total_harga' => 'integer',
         'selisih' => 'integer',
+        'barang_id' => 'integer',
         'created_by' => 'integer',
         'updated_by' => 'integer',
         'deleted_by' => 'integer'
@@ -79,6 +82,11 @@ class Pembayaran extends Model
     public static $rules = [
         
     ];
+
+    public function barang()
+    {
+        return $this->belongsTo(\App\Models\Barang::class, 'barang_id', 'id');
+    }
 
     
 }
