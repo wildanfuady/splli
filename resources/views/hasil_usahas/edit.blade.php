@@ -26,8 +26,8 @@
             </div>
 
             <div class="card-footer">
-                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('hasilUsahas.index') }}" class="btn btn-default">Cancel</a>
+                {!! Form::submit('Update', ['class' => 'btn btn-primary float-right']) !!}
+                <a href="{{ route('hasilUsahas.index') }}" class="btn btn-default">Batal</a>
             </div>
 
            {!! Form::close() !!}

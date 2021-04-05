@@ -18,7 +18,19 @@ class HasilUsahaDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'hasil_usahas.datatables_actions');
+        return $dataTable->addColumn('action', 'hasil_usahas.datatables_actions')
+        ->editColumn('tanggal', function($data){
+            return date('d-m-Y H:i', strtotime($data->tanggal));
+        })
+        ->editColumn('uang_masuk', function($data){
+            return "Rp".number_format($data->uang_masuk, 0, 0, ".");
+        })
+        ->editColumn('uang_keluar', function($data){
+            return "Rp".number_format($data->uang_keluar, 0, 0, ".");
+        })
+        ->editColumn('total_saldo', function($data){
+            return "Rp".number_format($data->total_saldo, 0, 0, ".");
+        });
     }
 
     /**
@@ -42,7 +54,7 @@ class HasilUsahaDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false])
+            // ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'       => 'Bfrtip',
                 'stateSave' => true,
@@ -65,11 +77,12 @@ class HasilUsahaDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'pembayaran_id' => ['searchable' => false],
-            'uang_keluar_id' => ['searchable' => false],
-            'tanggal' => ['searchable' => false],
-            'keterangan' => ['searchable' => false],
-            'total_saldo' => ['searchable' => false]
+            'action' => ['width' => '120px', 'printable' => false],
+            'tanggal' => ['searchable' => true],
+            'uang_masuk' => ['searchable' => true],
+            'uang_keluar' => ['searchable' => true],
+            'total_saldo' => ['searchable' => true],
+            'keterangan' => ['searchable' => true]
         ];
     }
 

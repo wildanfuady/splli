@@ -30,8 +30,8 @@ class HasilUsaha extends Model
 
 
     public $fillable = [
-        'pembayaran_id',
-        'uang_keluar_id',
+        'uang_masuk',
+        'uang_keluar',
         'tanggal',
         'keterangan',
         'total_saldo'
@@ -43,8 +43,8 @@ class HasilUsaha extends Model
      * @var array
      */
     protected $casts = [
-        'pembayaran_id' => 'integer',
-        'uang_keluar_id' => 'integer',
+        'uang_masuk' => 'integer',
+        'uang_keluar' => 'integer',
         'tanggal' => 'string',
         'keterangan' => 'string',
         'total_saldo' => 'integer',
@@ -59,7 +59,11 @@ class HasilUsaha extends Model
      * @var array
      */
     public static $rules = [
-        
+        'uang_masuk' => 'required|numeric',
+        'uang_keluar' => 'required|numeric',
+        'tanggal' => 'required|string',
+        'keterangan' => 'required|string',
+        'total_saldo' => 'required|numeric',
     ];
 
     /**
