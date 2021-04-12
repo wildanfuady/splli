@@ -55,7 +55,7 @@ class StokBarang extends Model
      * @var array
      */
     public static $rules = [
-        'barang_id' => 'required|numeric',
+        'barang_id' => 'required|numeric|unique:barang_id',
         'harga_jual' => 'required|numeric',
         'qty' => 'required|numeric'
     ];

@@ -1,9 +1,3 @@
-<!-- Id Po Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('id_po', 'ID PO:') !!}
-    {!! Form::text('id_po', null, ['class' => 'form-control', 'placeholder' => 'Masukan ID PO']) !!}
-</div>
-
 <!-- Tanggal Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('tanggal', 'Tanggal:') !!}

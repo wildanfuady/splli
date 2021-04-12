@@ -19,13 +19,19 @@
 <!-- Harga Barang Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('harga_barang', 'Harga Barang:') !!}
-    {!! Form::text('harga_barang', null, ['class' => 'form-control', 'placeholder' => '0']) !!}
+    {!! Form::number('harga_barang', null, ['class' => 'form-control', 'placeholder' => '0']) !!}
 </div>
 
 <!-- Qty Pembalian Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('qty_pembelian', 'Qty Pembelian:') !!}
-    {!! Form::text('qty_pembelian', null, ['class' => 'form-control', 'placeholder' => '0']) !!}
+    {!! Form::number('qty_pembelian', null, ['class' => 'form-control', 'placeholder' => '0']) !!}
+</div>
+
+<!-- Harga Jual Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('harga_jual', 'Harga Jual:') !!}
+    {!! Form::number('harga_jual', null, ['class' => 'form-control', 'placeholder' => '0']) !!}
 </div>
 
 <!-- Nama Pic Field -->

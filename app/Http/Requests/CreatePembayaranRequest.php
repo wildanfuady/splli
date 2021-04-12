@@ -26,7 +26,6 @@ class CreatePembayaranRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_po' => 'required|string',
             'tanggal' => 'required|string',
             'plat_motor' => 'required|string',
             'nama_konsumen' => 'required|string',

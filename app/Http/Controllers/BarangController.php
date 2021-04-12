@@ -10,6 +10,7 @@ use App\Repositories\BarangRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use Auth;
 
 class BarangController extends AppBaseController
 {
@@ -54,6 +55,13 @@ class BarangController extends AppBaseController
         $input = $request->all();
 
         $barang = $this->barangRepository->create($input);
+
+        $stokBarang = new \App\Models\StokBarang;
+        $stokBarang->barang_id = $barang->id;
+        $stokBarang->qty = $request->qty_pembelian;
+        $stokBarang->harga_jual = $request->harga_jual;
+        $stokBarang->created_by = Auth::id();
+        $stokBarang->save();
 
         Flash::success('Pembelian Barang saved successfully.');
 
@@ -119,6 +127,12 @@ class BarangController extends AppBaseController
         }
 
         $barang = $this->barangRepository->update($request->all(), $id);
+
+        $stokBarang = \App\Models\StokBarang::where('barang_id', $id)->first();
+        $stokBarang->qty = $request->qty_pembelian;
+        $stokBarang->harga_jual = $request->harga_jual;
+        $stokBarang->created_by = Auth::id();
+        $stokBarang->save();
 
         Flash::success('Pembelian Barang updated successfully.');
 

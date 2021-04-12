@@ -59,6 +59,14 @@ class PembayaranController extends AppBaseController
         $input['tanggal'] = date('Y-m-d H:i', strtotime($request->tanggal));
         $input['barang_id'] = $request->barang_id;
 
+        /// delete space
+        $plat = str_replace(" ", "", $request->plat_motor);
+        $tanggal = str_replace(" ", "", $request->tanggal);
+
+        /// otomatis membuat id po ambil dari plat dan tanggal
+        $idPo = substr($plat, 0, 2).substr($tanggal, 0, 2).rand(111,999);
+        $input['id_po'] = $idPo;
+
         $pembayaran = $this->pembayaranRepository->create($input);
 
         Flash::success('Pembayaran saved successfully.');
@@ -130,6 +138,15 @@ class PembayaranController extends AppBaseController
         $input = $request->all();
         $input['barang_id'] = $request->barang_id;
         $input['tanggal'] = date('Y-m-d H:i', strtotime($request->tanggal));
+
+        /// delete space
+        $plat = str_replace(" ", "", $request->plat_motor);
+        $tanggal = str_replace(" ", "", $request->tanggal);
+
+        /// otomatis membuat id po ambil dari plat dan tanggal
+        $idPo = substr($plat, 0, 2).substr($tanggal, 0, 2).rand(111,999);
+        $input['id_po'] = $idPo;
+
         $pembayaran = $this->pembayaranRepository->update($input, $id);
 
         Flash::success('Pembayaran updated successfully.');

@@ -127,9 +127,8 @@ class StokBarangController extends AppBaseController
         $input = $request->all();
 
         $input['updated_by'] = Auth::id();
-
+        
         $stokBarang = $this->stokBarangRepository->update($input, $id);
-
         Flash::success('Stok Barang updated successfully.');
 
         return redirect(route('stokBarangs.index'));
