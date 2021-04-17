@@ -156,6 +156,11 @@ class BarangController extends AppBaseController
             return redirect(route('barangs.index'));
         }
 
+        /// hapus juga data stok barang
+        $stokBarang = \App\Models\StokBarang::findOrFail($barang->id);
+        $stokBarang->delete();
+
+        /// setelah sukses hapus stok barang, hapus barang
         $this->barangRepository->delete($id);
 
         Flash::success('Pembelian Barang deleted successfully.');

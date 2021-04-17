@@ -1,13 +1,7 @@
-<!-- Id Field -->
-<div class="col-sm-12">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{{ $stokBarang->id }}</p>
-</div>
-
 <!-- Barang Id Field -->
 <div class="col-sm-12">
-    {!! Form::label('barang_id', 'Barang Id:') !!}
-    <p>{{ $stokBarang->barang_id }}</p>
+    {!! Form::label('barang_id', 'Nama Barang:') !!}
+    <p>{{ $stokBarang->barang->nama_barang }}</p>
 </div>
 
 <!-- Harga Jual Field -->

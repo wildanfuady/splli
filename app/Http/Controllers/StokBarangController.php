@@ -126,6 +126,20 @@ class StokBarangController extends AppBaseController
 
         $input = $request->all();
 
+        $barang = \App\Models\Barang::findOrFail($stokBarang->barang_id);
+
+        if($input['tambah_stok'] != null || $input['tambah_stok'] != ""){
+            $input['qty'] = $stokBarang->qty + $input['tambah_stok'];
+            // $barang->qty_pembelian += $input['tambah_stok'];
+            // $barang->save();
+        }
+
+        if($input['keluar_stok'] != null || $input['keluar_stok'] != ""){
+            $input['qty'] = $stokBarang->qty - $input['keluar_stok'];
+            // $barang->qty_pembelian -= $input['keluar_stok'];
+            // $barang->save();
+        }
+
         $input['updated_by'] = Auth::id();
         
         $stokBarang = $this->stokBarangRepository->update($input, $id);
@@ -155,6 +169,11 @@ class StokBarangController extends AppBaseController
 
         $this->stokBarangRepository->update($input, $id);
 
+        /// hapus juga data pembelian barang
+        $barang = \App\Models\Barang::findOrFail($stokBarang->barang_id);
+        $barang->delete();
+
+        /// setelah sukses hapus barang, hapus stok barang
         $this->stokBarangRepository->delete($id);
 
         Flash::success('Stok Barang deleted successfully.');
