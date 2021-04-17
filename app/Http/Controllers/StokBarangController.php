@@ -170,8 +170,8 @@ class StokBarangController extends AppBaseController
         $this->stokBarangRepository->update($input, $id);
 
         /// hapus juga data pembelian barang
-        $barang = \App\Models\Barang::findOrFail($stokBarang->barang_id);
-        $barang->delete();
+        // $barang = \App\Models\Barang::findOrFail($stokBarang->barang_id);
+        // $barang->delete();
 
         /// setelah sukses hapus barang, hapus stok barang
         $this->stokBarangRepository->delete($id);

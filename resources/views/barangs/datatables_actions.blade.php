@@ -9,7 +9,7 @@
     {!! Form::button('<i class="fa fa-trash-alt"></i>', [
         'type' => 'submit',
         'class' => 'btn btn-danger btn-xs',
-        'onclick' => "return confirm('Apakah Anda yakin ingin menghapus pembelian barang ini?')"
+        'onclick' => "return confirm('Menghapus data barang berarti akan menghapus data stok barang. Apakah Anda yakin ingin menghapus pembelian barang ini?')"
     ]) !!}
 </div>
 {!! Form::close() !!}
