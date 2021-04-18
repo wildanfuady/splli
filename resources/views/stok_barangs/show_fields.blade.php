@@ -7,7 +7,7 @@
 <!-- Harga Jual Field -->
 <div class="col-sm-12">
     {!! Form::label('harga_jual', 'Harga Jual:') !!}
-    <p>{{ $stokBarang->harga_jual }}</p>
+    <p>{{ "Rp".number_format($stokBarang->harga_jual,0,0,".") }}</p>
 </div>
 
 <!-- Qty Field -->

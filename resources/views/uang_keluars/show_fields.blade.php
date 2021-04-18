@@ -1,9 +1,3 @@
-<!-- Id Field -->
-<div class="col-sm-12">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{{ $uangKeluar->id }}</p>
-</div>
-
 <!-- Tanggal Field -->
 <div class="col-sm-12">
     {!! Form::label('tanggal', 'Tanggal:') !!}
@@ -19,12 +13,12 @@
 <!-- Harga Field -->
 <div class="col-sm-12">
     {!! Form::label('harga', 'Harga:') !!}
-    <p>{{ $uangKeluar->harga }}</p>
+    <p>{{ "Rp".number_format($uangKeluar->harga,0,0,".") }}</p>
 </div>
 
 <!-- Total Harga Field -->
 <div class="col-sm-12">
     {!! Form::label('total_harga', 'Total Harga:') !!}
-    <p>{{ $uangKeluar->total_harga }}</p>
+    <p>{{ "Rp".number_format($uangKeluar->total_harga,0,0,".") }}</p>
 </div>
 

@@ -1,9 +1,3 @@
-<!-- Id Field -->
-<div class="col-sm-12">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{{ $pembayaran->id }}</p>
-</div>
-
 <!-- Id Po Field -->
 <div class="col-sm-12">
     {!! Form::label('id_po', 'Id Po:') !!}
@@ -13,7 +7,7 @@
 <!-- Tanggal Field -->
 <div class="col-sm-12">
     {!! Form::label('tanggal', 'Tanggal:') !!}
-    <p>{{ $pembayaran->tanggal }}</p>
+    <p>{{ date('d-m-Y H:i', strtotime($pembayaran->tanggal)) }}</p>
 </div>
 
 <!-- Plat Motor Field -->
@@ -31,19 +25,19 @@
 <!-- Nama Sparepart Field -->
 <div class="col-sm-12">
     {!! Form::label('nama_sparepart', 'Nama Sparepart:') !!}
-    <p>{{ $pembayaran->nama_sparepart }}</p>
+    <p>{{ $pembayaran->barang->nama_barang }}</p>
 </div>
 
 <!-- Harga Grosir Field -->
 <div class="col-sm-12">
     {!! Form::label('harga_grosir', 'Harga Grosir:') !!}
-    <p>{{ $pembayaran->harga_grosir }}</p>
+    <p>{{ "Rp".number_format($pembayaran->harga_grosir,0,0,".") }}</p>
 </div>
 
 <!-- Harga Jual Field -->
 <div class="col-sm-12">
     {!! Form::label('harga_jual', 'Harga Jual:') !!}
-    <p>{{ $pembayaran->harga_jual }}</p>
+    <p>{{ "Rp".number_format($pembayaran->harga_jual,0,0,".") }}</p>
 </div>
 
 <!-- Qty Field -->
@@ -55,54 +49,23 @@
 <!-- Harga Pasang Field -->
 <div class="col-sm-12">
     {!! Form::label('harga_pasang', 'Harga Pasang:') !!}
-    <p>{{ $pembayaran->harga_pasang }}</p>
+    <p>{{ "Rp".number_format($pembayaran->harga_pasang,0,0,".") }}</p>
 </div>
 
 <!-- Jasa Service Field -->
 <div class="col-sm-12">
     {!! Form::label('jasa_service', 'Jasa Service:') !!}
-    <p>{{ $pembayaran->jasa_service }}</p>
+    <p>{{ "Rp".number_format($pembayaran->jasa_service,0,0,".") }}</p>
 </div>
 
 <!-- Total Harga Field -->
 <div class="col-sm-12">
     {!! Form::label('total_harga', 'Total Harga:') !!}
-    <p>{{ $pembayaran->total_harga }}</p>
+    <p>{{ "Rp".number_format($pembayaran->total_harga,0,0,".") }}</p>
 </div>
 
 <!-- Selisih Field -->
 <div class="col-sm-12">
     {!! Form::label('selisih', 'Selisih:') !!}
-    <p>{{ $pembayaran->selisih }}</p>
+    <p>{{ "Rp".number_format($pembayaran->selisih,0,0,".") }}</p>
 </div>
-
-<!-- Created By Field -->
-<div class="col-sm-12">
-    {!! Form::label('created_by', 'Created By:') !!}
-    <p>{{ $pembayaran->created_by }}</p>
-</div>
-
-<!-- Updated By Field -->
-<div class="col-sm-12">
-    {!! Form::label('updated_by', 'Updated By:') !!}
-    <p>{{ $pembayaran->updated_by }}</p>
-</div>
-
-<!-- Deleted By Field -->
-<div class="col-sm-12">
-    {!! Form::label('deleted_by', 'Deleted By:') !!}
-    <p>{{ $pembayaran->deleted_by }}</p>
-</div>
-
-<!-- Created At Field -->
-<div class="col-sm-12">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{{ $pembayaran->created_at }}</p>
-</div>
-
-<!-- Updated At Field -->
-<div class="col-sm-12">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{{ $pembayaran->updated_at }}</p>
-</div>
-

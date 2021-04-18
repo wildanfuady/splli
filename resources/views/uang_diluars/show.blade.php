@@ -5,11 +5,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Uang Diluar Details</h1>
+                    <h1>Detail Uang Diluar</h1>
                 </div>
                 <div class="col-sm-6">
                     <a class="btn btn-default float-right"
-                       href="{{ route('posts.index') }}">
+                       href="{{ route('uangDiluars.index') }}">
                         Back
                     </a>
                 </div>
