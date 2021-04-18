@@ -26,13 +26,27 @@ class HasilUsahaAPIController extends AppBaseController
         $this->hasilUsahaRepository = $hasilUsahaRepo;
     }
 
-    /**
-     * Display a listing of the HasilUsaha.
-     * GET|HEAD /hasilUsahas
-     *
-     * @param Request $request
-     * @return Response
-     */
+    public function get_uang_masuk_by_tanggal($tgl = null)
+    {
+        $tgl = date('Y-m-d', strtotime($tgl));
+        $pembayaran = \App\Models\Pembayaran::whereDate('tanggal', '=', $tgl)->get();
+        $total = 0;
+        foreach($pembayaran as $item){
+            $total += (int)$item->total_harga;
+        }
+        return $total;
+    }
+
+    public function get_uang_keluar_by_tanggal($tgl = null)
+    {
+        $uangKeluar = \App\Models\UangKeluar::where('tanggal', '=', $tgl)->get();
+        $total = 0;
+        foreach($uangKeluar as $item){
+            $total += (int)$item->total_harga;
+        }
+        return $total;
+    }
+
     public function index(Request $request)
     {
         $hasilUsahas = $this->hasilUsahaRepository->all(

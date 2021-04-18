@@ -20,7 +20,7 @@ class HasilUsahaDataTable extends DataTable
 
         return $dataTable->addColumn('action', 'hasil_usahas.datatables_actions')
         ->editColumn('tanggal', function($data){
-            return date('d-m-Y H:i', strtotime($data->tanggal));
+            return date('d-m-Y', strtotime($data->tanggal));
         })
         ->editColumn('uang_masuk', function($data){
             return "Rp".number_format($data->uang_masuk, 0, 0, ".");
