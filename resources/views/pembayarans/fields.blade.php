@@ -50,16 +50,31 @@
     {!! Form::number('qty', null, ['class' => 'form-control', 'placeholder' => '0', 'id' => 'qty']) !!}
 </div>
 
-<!-- Harga Pasang Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('harga_pasang', 'Harga + Pasang:') !!}
-    {!! Form::number('harga_pasang', null, ['class' => 'form-control', 'placeholder' => '0']) !!}
-</div>
-
 <!-- Jasa Service Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('jasa_service', 'Jasa Service:') !!}
-    {!! Form::number('jasa_service', null, ['class' => 'form-control', 'placeholder' => '0']) !!}
+    {!! Form::number('jasa_service', null, ['class' => 'form-control', 'placeholder' => '0', 'id' => 'jasa_service']) !!}
+</div>
+
+<!-- PUK Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('puk', 'PUK:') !!}
+    <small class="text-danger">PUK = 40% * Jasa Service <span id="text_qty"></span></small>
+    {!! Form::number('puk', null, ['class' => 'form-control', 'placeholder' => '0', 'readonly', 'id' => 'puk']) !!}
+</div>
+
+<!-- Mekanik Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Mekanik', 'Mekanik:') !!}
+    <small class="text-danger">Mekanik = 60% * Jasa Service <span id="text_qty"></span></small>
+    {!! Form::number('mekanik', null, ['class' => 'form-control', 'placeholder' => '0', 'readonly', 'id' => 'mekanik']) !!}
+</div>
+
+<!-- Harga Pasang Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('harga_pasang', 'Harga + Pasang:') !!}
+    <small class="text-danger">Harga + Pasang = (Harga Jual * qty) <span id="text_qty"></span></small>
+    {!! Form::number('harga_pasang', null, ['class' => 'form-control', 'placeholder' => '0', 'id' => 'harga_pasang']) !!}
 </div>
 
 <!-- Total Harga Field -->
@@ -72,7 +87,7 @@
 <!-- Selisih Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('selisih', 'Selisih:') !!}
-    <small class="text-danger">Hasil = Total harga - modal</small>
+    <small class="text-danger">Hasil = Total harga - Modal (Harga Grosir * Qty)</small>
     {!! Form::number('selisih', null, ['class' => 'form-control', 'placeholder' => '0']) !!}
 </div>
 
@@ -87,6 +102,32 @@
             $('.select2bs4').select2({
                 theme: 'bootstrap4',
                 placeholder: 'Pilih Barang'
+            });
+            $("#qty").keyup(function(){
+                var harga_jual = $("#harga_jual").val();
+                var qty = $("#qty").val();
+                $("#harga_pasang").val(harga_jual * qty);
+            });
+            $("#jasa_service").keyup(function(){
+                var jasa_service = $("#jasa_service").val();
+                var qty = $("#qty").val();
+                var harga_pasang = $("#harga_pasang").val();
+                var harga_grosir = $("#harga_grosir").val();
+                var harga_jual = $("#harga_jual").val();
+                $("#puk").val(40 * jasa_service / 100);
+                $("#mekanik").val(60 * jasa_service / 100);
+                $("#harga_pasang").val(parseInt(harga_jual) * qty);
+                $("#total_harga").val(parseInt(harga_pasang) + parseInt(jasa_service));
+                $("#selisih").val((parseInt(harga_pasang) + parseInt(jasa_service)) - (parseInt(harga_grosir) * qty));
+            });
+            $("#harga_pasang").keyup(function(){
+                var jasa_service = $("#jasa_service").val();
+                var qty = $("#qty").val();
+                var harga_pasang = $("#harga_pasang").val();
+                var harga_grosir = $("#harga_grosir").val();
+                var harga_jual = $("#harga_jual").val();
+                $("#total_harga").val(parseInt(harga_pasang) + parseInt(jasa_service));
+                $("#selisih").val((parseInt(harga_pasang) + parseInt(jasa_service)) - (parseInt(harga_grosir) * qty));
             });
         });
         function changeBarangItem(i) {

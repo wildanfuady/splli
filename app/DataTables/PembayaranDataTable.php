@@ -31,6 +31,12 @@ class PembayaranDataTable extends DataTable
         ->editColumn('jasa_service', function($data){
             return "Rp".number_format($data->jasa_service, 0, 0, ".");
         })
+        ->editColumn('puk', function($data){
+            return "Rp".number_format($data->puk, 0, 0, ".");
+        })
+        ->editColumn('mekanik', function($data){
+            return "Rp".number_format($data->mekanik, 0, 0, ".");
+        })
         ->editColumn('total_harga', function($data){
             return "Rp".number_format($data->total_harga, 0, 0, ".");
         })
@@ -100,6 +106,8 @@ class PembayaranDataTable extends DataTable
             'qty' => ['searchable' => true],
             'harga_pasang' => ['searchable' => true],
             'jasa_service' => ['searchable' => true],
+            'puk' => ['searchable' => true],
+            'mekanik' => ['searchable' => true],
             'total_harga' => ['searchable' => true],
             'selisih' => ['searchable' => true]
         ];
