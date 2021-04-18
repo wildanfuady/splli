@@ -22,6 +22,18 @@ class UangDiluarDataTable extends DataTable
         ->editColumn('jumlah_tagihan', function($data){
             return "Rp".number_format($data->jumlah_tagihan, 0, 0, ".");
         })
+        ->editColumn('jumlah_tagihan2', function($data){
+            return "Rp".number_format($data->jumlah_tagihan2, 0, 0, ".");
+        })
+        ->editColumn('jumlah_tagihan3', function($data){
+            return "Rp".number_format($data->jumlah_tagihan3, 0, 0, ".");
+        })
+        ->editColumn('jumlah_tagihan4', function($data){
+            return "Rp".number_format($data->jumlah_tagihan4, 0, 0, ".");
+        })
+        ->editColumn('jumlah_tagihan5', function($data){
+            return "Rp".number_format($data->jumlah_tagihan5, 0, 0, ".");
+        })
         ->editColumn('jumlah_hutang', function($data){
             return "Rp".number_format($data->jumlah_hutang, 0, 0, ".");
         })
@@ -77,7 +89,11 @@ class UangDiluarDataTable extends DataTable
             'action' => ['width' => '120px', 'printable' => false],
             'nama_konsumen' => ['searchable' => true],
             'hp_konsumen' => ['searchable' => true, 'title' => 'HP Konsumen'],
-            'jumlah_tagihan' => ['searchable' => true],
+            'jumlah_tagihan' => ['searchable' => true, 'title' => 'Jumlah Tagihan 1'],
+            'jumlah_tagihan2' => ['searchable' => true, 'title' => 'Jumlah Tagihan 2'],
+            'jumlah_tagihan3' => ['searchable' => true, 'title' => 'Jumlah Tagihan 3'],
+            'jumlah_tagihan4' => ['searchable' => true, 'title' => 'Jumlah Tagihan 4'],
+            'jumlah_tagihan5' => ['searchable' => true, 'title' => 'Jumlah Tagihan 5'],
             'jumlah_hutang' => ['searchable' => true],
             'sisa_hutang' => ['searchable' => true],
             'keterangan' => ['searchable' => true]
