@@ -29,7 +29,20 @@ class StokBarangDataTable extends DataTable
         })
         ->addColumn('harga_jual', function($data){
             return "Rp".number_format($data->harga_jual, 0, 0, ".");
-        });
+        })
+        ->editColumn('qty', function($data){
+            $color = "";
+            if($data->qty <= 10){
+                $color = "danger";
+            } else if($data->qty <= 20){
+                $color = "warning";
+            } else {
+                $color = "success";
+            }
+
+        return "<span class='text-".$color."'><strong>".$data->qty."</strong></span>";
+        })
+        ->escapeColumns([]);
     }
 
     /**

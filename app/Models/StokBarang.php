@@ -67,4 +67,18 @@ class StokBarang extends Model
     {
         return $this->belongsTo(\App\Models\Barang::class, 'barang_id', 'id');
     }
+
+    public function cekStok($stok = null)
+    {
+        $color = "";
+        if($stok <= 20){
+            $color = "warning";
+        } else if($stok <= 10){
+            $color = "danger";
+        } else {
+            $color = "success";
+        }
+
+        return "<span class='text-".$color."'><strong>".$stok."</strong></span>";
+    }
 }
