@@ -29,7 +29,9 @@ class HasilUsahaAPIController extends AppBaseController
     public function get_uang_masuk_by_tanggal($tgl = null)
     {
         $tgl = date('Y-m-d', strtotime($tgl));
-        $pembayaran = \App\Models\Pembayaran::whereDate('tanggal', '=', $tgl)->get();
+        // dd($tgl);
+        $pembayaran = \App\Models\Pembayaran::whereDate('tanggal', $tgl)->get();
+        // dd($pembayaran);
         $total = 0;
         foreach($pembayaran as $item){
             $total += (int)$item->total_harga;
