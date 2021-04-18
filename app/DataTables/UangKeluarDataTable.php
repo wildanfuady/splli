@@ -75,7 +75,8 @@ class UangKeluarDataTable extends DataTable
             'tanggal' => ['searchable' => true],
             'qty' => ['searchable' => true],
             'harga' => ['searchable' => true],
-            'total_harga' => ['searchable' => true]
+            'total_harga' => ['searchable' => true],
+            'keterangan' => ['searchable' => true]
         ];
     }
 

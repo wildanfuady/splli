@@ -79,7 +79,8 @@ class UangDiluarDataTable extends DataTable
             'hp_konsumen' => ['searchable' => true, 'title' => 'HP Konsumen'],
             'jumlah_tagihan' => ['searchable' => true],
             'jumlah_hutang' => ['searchable' => true],
-            'sisa_hutang' => ['searchable' => true]
+            'sisa_hutang' => ['searchable' => true],
+            'keterangan' => ['searchable' => true]
         ];
     }
 
