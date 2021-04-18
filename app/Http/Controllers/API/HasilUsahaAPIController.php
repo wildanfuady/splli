@@ -30,7 +30,7 @@ class HasilUsahaAPIController extends AppBaseController
     {
         $tgl = date('Y-m-d', strtotime($tgl));
         // dd($tgl);
-        $pembayaran = \App\Models\Pembayaran::whereDate('tanggal', $tgl)->get();
+        $pembayaran = \App\Models\Pembayaran::whereRaw('DATE(tanggal) = ?', [$tgl])->get();
         // dd($pembayaran);
         $total = 0;
         foreach($pembayaran as $item){
