@@ -19,7 +19,7 @@ class StokBarangDataTable extends DataTable
             return ++$this->index;
         })
         ->addColumn('kode_barang', function($data){
-            return $data->barang->nama_barang;
+            return $data->barang->kode_barang;
         })
         ->addColumn('nama_barang', function($data){
             return $data->barang->nama_barang;
