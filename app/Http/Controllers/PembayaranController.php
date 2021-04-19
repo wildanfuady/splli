@@ -67,6 +67,14 @@ class PembayaranController extends AppBaseController
         $idPo = substr($plat, 0, 2).substr($tanggal, 0, 2).rand(111,999);
         $input['id_po'] = $idPo;
 
+        /// manage stok barang
+        $stok = $input['qty'];
+
+        $stokBarang = \App\Models\StokBarang::findOrFail($input['barang_id']);
+        $stokBarang->qty -= (int)$stok;
+        $stokBarang->save();
+        /// end manage stok barang
+
         $pembayaran = $this->pembayaranRepository->create($input);
 
         Flash::success('Pembayaran saved successfully.');
@@ -146,6 +154,14 @@ class PembayaranController extends AppBaseController
         /// otomatis membuat id po ambil dari plat dan tanggal
         $idPo = substr($plat, 0, 2).substr($tanggal, 0, 2).rand(111,999);
         $input['id_po'] = $idPo;
+
+        /// manage stok barang
+        $stok = $input['qty'];
+
+        $stokBarang = \App\Models\StokBarang::findOrFail($input['barang_id']);
+        $stokBarang->qty -= (int)$stok;
+        $stokBarang->save();
+        /// end manage stok barang
 
         $pembayaran = $this->pembayaranRepository->update($input, $id);
 
