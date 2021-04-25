@@ -17,6 +17,9 @@ class BarangDataTable extends DataTable
         return $dataTable->addColumn('action', 'barangs.datatables_actions')
         ->addColumn('no', function(){
             return ++$this->index;
+        })
+        ->editColumn('harga_barang', function($data){
+            return "Rp".number_format($data->harga_barang, 0, 0, ".");
         });
     }
 
