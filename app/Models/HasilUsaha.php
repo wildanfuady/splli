@@ -33,6 +33,7 @@ class HasilUsaha extends Model
         'uang_masuk',
         'uang_keluar',
         'tanggal',
+        'tanggal_akhir',
         'keterangan',
         'total_saldo'
     ];
@@ -46,6 +47,7 @@ class HasilUsaha extends Model
         'uang_masuk' => 'integer',
         'uang_keluar' => 'integer',
         'tanggal' => 'string',
+        'tanggal_akhir' => 'string',
         'keterangan' => 'string',
         'total_saldo' => 'integer',
         'created_by' => 'integer',
@@ -62,6 +64,7 @@ class HasilUsaha extends Model
         'uang_masuk' => 'required|numeric',
         'uang_keluar' => 'required|numeric',
         'tanggal' => 'required|string',
+        'tanggal_akhir' => 'required|string',
         'keterangan' => 'required|string',
         'total_saldo' => 'required|numeric',
     ];

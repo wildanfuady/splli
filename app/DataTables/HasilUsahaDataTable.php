@@ -22,6 +22,9 @@ class HasilUsahaDataTable extends DataTable
         ->editColumn('tanggal', function($data){
             return date('d-m-Y', strtotime($data->tanggal));
         })
+        ->editColumn('tanggal_akhir', function($data){
+            return date('d-m-Y', strtotime($data->tanggal_akhir));
+        })
         ->editColumn('uang_masuk', function($data){
             return "Rp".number_format($data->uang_masuk, 0, 0, ".");
         })
@@ -78,7 +81,8 @@ class HasilUsahaDataTable extends DataTable
     {
         return [
             'action' => ['width' => '120px', 'printable' => false],
-            'tanggal' => ['searchable' => true],
+            'tanggal' => ['searchable' => true, 'title' => 'Tanggal Awal'],
+            'tanggal_akhir' => ['searchable' => true],
             'uang_masuk' => ['searchable' => true],
             'uang_keluar' => ['searchable' => true],
             'total_saldo' => ['searchable' => true],

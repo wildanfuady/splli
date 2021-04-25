@@ -1,12 +1,19 @@
 <!-- Tanggal Field -->
-<div class="form-group col-sm-12">
-    {!! Form::label('tanggal', 'Tanggal:') !!}
-    <div class="input-group">
+<div class="form-group col-sm-4">
+    {!! Form::label('tanggal', 'Tanggal Awal:') !!}
     {!! Form::text('tanggal', null, ['class' => 'form-control tanggal', 'placeholder' => 'dd-mm-yyyy', 'autosave' => 'false', 'autocomplete' => 'off']) !!}
-    <div class="input-group-append">
-        <button class="btn btn-success" id="cekUang" type="button">Cek Uang Masuk dan Keluar</button>
-    </div>
 </div>
+
+<div class="form-group col-sm-4">
+    {!! Form::label('tanggal_akhir', 'Tanggal Akhir:') !!}
+    {!! Form::text('tanggal_akhir', null, ['class' => 'form-control tanggal_akhir', 'placeholder' => 'dd-mm-yyyy', 'autosave' => 'false', 'autocomplete' => 'off']) !!}
+</div>
+
+<div class="form-group col-sm-4">
+    {!! Form::label('tanggal_akhir', 'Klik untuk Cek:') !!}
+    <div class="input-group-append">
+        <button class="btn btn-success btn-block" id="cekUang" type="button">Lakukan Pengecekan</button>
+    </div>
 </div>
 
 <!-- Uang Masuk Field -->
@@ -40,6 +47,10 @@
             $('.tanggal').datetimepicker({
                 format: 'DD-MM-YYYY',
             });
+
+            $('.tanggal_akhir').datetimepicker({
+                format: 'DD-MM-YYYY',
+            });
             
             var uangMasuk = 0;
             var uangKeluar = 0;
@@ -58,8 +69,9 @@
             });
             $("#cekUang").on('click', function(){
                 var i = $("#tanggal").val();
-                if(i == null || i == ""){
-                    alert("Pilih tanggal terlebih dahulu.");
+                var j = $("#tanggal_akhir").val();
+                if(i == null || i == "" || j == null || j == ""){
+                    alert("Lengkapi input tanggal terlebih dahulu.");
                 }
                 var url1 = "{{ url('api/hasil_usaha/get_uang_masuk_by_tanggal/') }}";
                 var url2 = "{{ url('api/hasil_usaha/get_uang_keluar_by_tanggal/') }}";
@@ -69,7 +81,7 @@
                 var uangKeluar = 0;
                 $.ajax({
                     type: 'GET',
-                    url: url1 + '/' + i,
+                    url: url1 + '/' + i + '/' + j,
                     success: function (data) {
                         console.log(data);
 
@@ -90,7 +102,7 @@
                 });
                 $.ajax({
                     type: 'GET',
-                    url: url2 + '/' + i,
+                    url: url2 + '/' + i + '/' + j,
                     success: function (data) {
                         console.log(data);
 

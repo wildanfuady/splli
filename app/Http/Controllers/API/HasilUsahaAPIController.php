@@ -26,11 +26,12 @@ class HasilUsahaAPIController extends AppBaseController
         $this->hasilUsahaRepository = $hasilUsahaRepo;
     }
 
-    public function get_uang_masuk_by_tanggal($tgl = null)
+    public function get_uang_masuk_by_tanggal($tgl_awal = null, $tgl_akhir = null)
     {
-        $tgl = date('Y-m-d', strtotime($tgl));
+        $tgl_awal = date('Y-m-d', strtotime($tgl_awal));
+        $tgl_akhir = date('Y-m-d', strtotime($tgl_akhir));
         // dd($tgl);
-        $pembayaran = \App\Models\Pembayaran::whereRaw('DATE(tanggal) = ?', [$tgl])->get();
+        $pembayaran = \App\Models\Pembayaran::whereRaw('DATE(tanggal) >= ?', [$tgl_awal])->whereRaw('DATE(tanggal) <= ?', [$tgl_akhir])->get();
         // dd($pembayaran);
         $total = 0;
         foreach($pembayaran as $item){
@@ -39,9 +40,11 @@ class HasilUsahaAPIController extends AppBaseController
         return $total;
     }
 
-    public function get_uang_keluar_by_tanggal($tgl = null)
+    public function get_uang_keluar_by_tanggal($tgl_awal = null, $tgl_akhir = null)
     {
-        $uangKeluar = \App\Models\UangKeluar::where('tanggal', '=', $tgl)->get();
+
+        $uangKeluar = \App\Models\UangKeluar::where('tanggal', '>=', $tgl_awal)->where('tanggal', '<=', $tgl_akhir)->get();
+        
         $total = 0;
         foreach($uangKeluar as $item){
             $total += (int)$item->total_harga;

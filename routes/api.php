@@ -20,8 +20,8 @@ Route::group(['middleware' => 'auth:api'], function(){
 }); 
 
 Route::get('pembayaran/find_barang/{id}', 'PembayaranAPIController@find_barang');
-Route::get('hasil_usaha/get_uang_masuk_by_tanggal/{tgl}', 'HasilUsahaAPIController@get_uang_masuk_by_tanggal');
-Route::get('hasil_usaha/get_uang_keluar_by_tanggal/{tgl}', 'HasilUsahaAPIController@get_uang_keluar_by_tanggal');
+Route::get('hasil_usaha/get_uang_masuk_by_tanggal/{tgl1}/{tgl2}', 'HasilUsahaAPIController@get_uang_masuk_by_tanggal');
+Route::get('hasil_usaha/get_uang_keluar_by_tanggal/{tgl1}/{tgl2}', 'HasilUsahaAPIController@get_uang_keluar_by_tanggal');
 
 
 Route::resource('barangs', 'BarangAPIController');
