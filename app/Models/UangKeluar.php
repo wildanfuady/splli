@@ -28,6 +28,7 @@ class UangKeluar extends Model
 
     public $fillable = [
         'tanggal',
+        // 'tanggal_akhir',
         'qty',
         'harga',
         'total_harga',
@@ -44,6 +45,7 @@ class UangKeluar extends Model
      */
     protected $casts = [
         'tanggal' => 'string',
+        // 'tanggal_akhir' => 'string',
         'qty' => 'integer',
         'harga' => 'integer',
         'total_harga' => 'integer',

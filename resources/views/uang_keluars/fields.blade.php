@@ -1,8 +1,14 @@
 <!-- Tanggal Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('tanggal', 'Tanggal:') !!}
+    {!! Form::label('tanggal', 'Tanggal Awal:') !!}
     {!! Form::text('tanggal', null, ['class' => 'form-control', 'id' => 'tanggal', 'placeholder' => 'dd-mm-yyyy', 'autosave' => 'false', 'autocomplete' => 'off']) !!}
 </div>
+
+<!-- Tanggal Field -->
+{{-- <div class="form-group col-sm-4">
+    {!! Form::label('tanggal_akhir', 'Tanggal Akhir:') !!}
+    {!! Form::text('tanggal_akhir', null, ['class' => 'form-control', 'id' => 'tanggal_akhir', 'placeholder' => 'dd-mm-yyyy', 'autosave' => 'false', 'autocomplete' => 'off']) !!}
+</div> --}}
 
 <!-- Qty Field -->
 <div class="form-group col-sm-6">
@@ -37,6 +43,11 @@
                 useCurrent: true,
                 sideBySide: true
             });
+            // $('#tanggal_akhir').datetimepicker({
+            //     format: 'DD-MM-YYYY',
+            //     useCurrent: true,
+            //     sideBySide: true
+            // });
             var quantity = 0;
             var harga = 0;
             var totalHarga = 0;

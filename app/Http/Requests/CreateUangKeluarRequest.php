@@ -27,6 +27,7 @@ class CreateUangKeluarRequest extends FormRequest
     {
         return [
             'tanggal' => 'required|string',
+            // 'tanggal_akhir' => 'required|string',
             'qty' => 'required|numeric',
             'harga' => 'required|numeric',
             'total_harga' => 'required|numeric',
@@ -36,8 +37,10 @@ class CreateUangKeluarRequest extends FormRequest
     public function messages()
     {
         return [
-            'tanggal.required' => 'Tanggal wajib diisi.',
-            'tanggal.string' => 'Tanggal wajib berupa string.',
+            'tanggal.required' => 'Tanggal awal wajib diisi.',
+            'tanggal.string' => 'Tanggal awal wajib berupa string.',
+            // 'tanggal.required' => 'Tanggal akhir wajib diisi.',
+            // 'tanggal.string' => 'Tanggal akhir wajib berupa string.',
             'qty.required' => 'Quantity wajib diisi.',
             'qty.numeric' => 'Quantity wajib berupa angka.',
             'harga.required' => 'Harga wajib diisi.',

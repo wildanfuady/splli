@@ -1,5 +1,12 @@
 @extends('layouts.app')
-
+@push('page_css')
+<style>
+.table th {
+    white-space: nowrap !important;
+    width: 1% !important;
+}
+</style>
+@endpush
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
