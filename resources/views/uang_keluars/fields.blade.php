@@ -1,6 +1,6 @@
 <!-- Tanggal Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('tanggal', 'Tanggal Awal:') !!}
+    {!! Form::label('tanggal', 'Tanggal:') !!}
     {!! Form::text('tanggal', null, ['class' => 'form-control', 'id' => 'tanggal', 'placeholder' => 'dd-mm-yyyy', 'autosave' => 'false', 'autocomplete' => 'off']) !!}
 </div>
 

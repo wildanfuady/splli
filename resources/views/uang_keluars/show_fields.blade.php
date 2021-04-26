@@ -1,14 +1,14 @@
 <!-- Tanggal Field -->
 <div class="col-sm-12">
-    {!! Form::label('tanggal', 'Tanggal Awal:') !!}
+    {!! Form::label('tanggal', 'Tanggal:') !!}
     <p>{{ $uangKeluar->tanggal }}</p>
 </div>
 
 <!-- Tanggal Akhir Field -->
-<div class="col-sm-12">
+{{-- <div class="col-sm-12">
     {!! Form::label('tanggal', 'Tanggal Akhir:') !!}
     <p>{{ $uangKeluar->tanggal_akhir }}</p>
-</div>
+</div> --}}
 
 <!-- Qty Field -->
 <div class="col-sm-12">
@@ -29,8 +29,8 @@
 </div>
 
 <!-- Keterangan Field -->
-{{-- <div class="col-sm-12">
+<div class="col-sm-12">
     {!! Form::label('keterangan', 'Keterangan:') !!}
     <p>{!! $uangKeluar->keterangan !!}</p>
-</div> --}}
+</div>
 
